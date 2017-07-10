@@ -1,0 +1,13 @@
+<div>
+  <div class="homeIntro">
+    <md-tab-group class="tabLabels" [selectedIndex]="selectedTab" id="labelId" (click)="onLinkClick($event)">
+      <md-tab label="SITE">
+      </md-tab>
+      <md-tab label="PROJECT">
+      </md-tab>
+      <md-tab label="MOLECULAR FORMAT">
+      </md-tab>
+    </md-tab-group>
+  </div>
+  <router-outlet></router-outlet>
+</div>

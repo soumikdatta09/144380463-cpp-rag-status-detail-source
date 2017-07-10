@@ -1,0 +1,12 @@
+md-grid-tile {
+  font-size: 12px;
+  text-align: center;
+}
+.divCloseModal {
+  text-align:right;
+  height:25px;
+}
+.btnCloseModal {
+  min-width:20px;
+  background-color:#edeff0;
+}

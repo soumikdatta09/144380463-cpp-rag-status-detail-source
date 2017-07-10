@@ -1,0 +1,218 @@
+body{
+  margin: 0px 0px 0px 0px;
+}
+.help-block {
+    font-size: 12px;
+}
+.container{
+  margin: 0px;
+}
+.example-container {
+  width: 500px;
+}
+.progress-bar-danger {
+    background-color: #B0011B;
+}
+.progress-bar-warning {
+    background-color: #Fab600;
+}
+.progress-bar-success {
+    background-color: #7ED321;
+}
+.example-button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.progress{
+  width: 75%;
+  margin-left: 20%;
+}
+.custom-card{
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-top: 1.5%;
+    margin-bottom: 1%;
+}
+.content{
+  margin-left: 4%;
+  margin-bottom: 1.5%;
+  margin-top: 2.5%;
+  font-weight: bold;
+}
+.container{
+  width: 100%;
+  height: 100%;
+}
+.custom-inner-card{
+    margin-top: 1.5%;
+    margin-bottom: 1%;
+    background-color: white;;
+}
+.progress{
+  margin-bottom: 0px;
+  width: 100%;
+  margin-left: 0;
+  height: 50px;
+  border-radius: 0px;
+}
+label#lotsNameId {
+    padding-left: 30px;
+    padding-top: 10px;
+}
+.col-sm-4.custom-title {
+     width: 19%; 
+}
+div#progressbarFirst {
+    width: 100%;
+}
+div#colsm4 {
+    margin-right: -33%;
+}
+div#progressbarSecond {
+    height: 25px;
+    width: 20%;
+}
+.alert-danger {
+    background-color: #F8F9F9;
+    text-align: center;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+div#campName {
+    color: black;
+    font-weight: 700;
+}
+label#lotsNameId1 {
+    font-family: "Arial";
+    color: #4A4A4A;
+    font-weight: 500;
+    padding-left: 15%;
+    padding-top: 16px;
+}
+label#lotsNameId2 {
+    font-family: "Arial";
+    color: #4A4A4A;
+    font-weight: 700;
+    margin-left: 4%;
+}
+label.unitOperationNameId {
+    font-family: "Arial";
+    color: #4A4A4A;
+    font-weight: 500;
+    font-size: 15px;
+    margin-left: 9%;
+}
+label#mfsName {
+    color: #1BBEFE;
+    font-family: "Roboto";
+    font-size: 16px;
+    font-weight: 500;
+}
+label#cppName {
+    font-family: "Arial";
+    color: #4A4A4A;
+    margin-left: 0.5%;
+    color: #0C3681;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+span#imageSecond {
+    margin-left: 3045%;
+}
+div#progressbarThird {
+    height: 20px;
+    width: 31%;
+    margin-left: -30%;
+    margin-right: 2%;
+}
+.odd {
+    background-color: #F8F9F9;
+}
+.even {
+    background-color:white;
+}
+div#cppName {
+    width: 52%;
+    margin-right: 2%;
+    font-size: 15px;
+}
+md-list-item#listItem {
+    font-size: 10px;
+    padding: 0 0 0 379px;
+}
+md-icon.icon-source.mat-icon.material-icons {
+    color: #00BFFF;
+    font-size: 17px;
+    margin-top: 1%;
+    margin-left: 29%;
+}
+div#source {
+    font-size: 13px;
+    color: #00BFFF;
+}
+.panel-group .panel-heading + .panel-collapse > .panel-body {
+  border: 1px solid #ddd;
+}
+.panel-group,
+.panel-group .panel,
+.panel-group .panel-heading,
+.panel-group .panel-heading a,
+.panel-group .panel-title,
+.panel-group .panel-title a,
+.panel-group .panel-body,
+.panel-group .panel-group .panel-heading + .panel-collapse > .panel-body {
+}
+.panel-group .panel-heading {
+  padding: 0;
+}
+.panel-group .panel-heading a {
+  display: block;
+  background: #F8F9F9;
+  color: #ffffff;
+  text-decoration: none;
+  position: relative;
+}
+.panel-group .panel-heading a.collapsed {
+  background: #ffffff;
+  color: inherit;
+}
+.panel-group .panel-heading a:after {
+  font-family: 'Glyphicons Halflings';
+  content: "\e114";
+  position: absolute;
+  right: 20px;
+  top:15px;
+  font-size:16px;
+  color:black;
+}
+.panel-group .panel-heading a.collapsed:after {
+  content: "\e113";
+}
+.panel-group .panel-collapse {
+  margin-top: 5px !important;
+}
+.panel-group .panel-body {
+  background: #ffffff;
+  padding: 15px;
+}
+.panel-group .panel {
+  background-color: transparent;
+}
+.panel-group .panel-body p:last-child,
+.panel-group .panel-body ul:last-child,
+.panel-group .panel-body ol:last-child {
+  margin-bottom: 0;
+}
+>>> .mat-tab-body-content.ng-trigger.ng-trigger-translateTab {
+    overflow: hidden;
+}
+a#collapseSecond {
+    padding: 2%;
+    border: 0;
+}
+.panel.panel-default {
+    margin-bottom: 1%;
+}

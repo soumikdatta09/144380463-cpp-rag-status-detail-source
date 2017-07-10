@@ -1,0 +1,150 @@
+<div id="container" class="container">
+  <div class="custom-site">
+    <label id="site" class="custom-label-site">  {{ 'projectCampaignComponent.selectSite' | translate:lang }} </label>
+  </div>
+  <div class="custom-site-select">
+    <select class="custom-select" [ngModel]="selectedValue" (change)="onChange($event.target.value)">
+    <option *ngFor="let mf of mfs" value="{{mf.id}}">{{mf.name}}</option>
+    </select>
+  </div>
+  <div [ngBusy]="busy"></div>
+  <div class="container">
+    <div class="panel-group custom-panel" id="accordion">
+      <div class="panel panel-default" *ngFor="let campaignLot of campaignLots; let i=index" id="card" (click)="getcamp_id(campaignLot.campaign.id)">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a id="custom-panel" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne_i{{i}}">
+              <div id="card-campaign" class="row">
+                <div class="col-sm-4 custom-title" id="campNames">
+                  <label id="campaignName1">{{ 'projectCampaignComponent.campaign' | translate:lang }} {{campaignLot.campaign.name}}</label>
+                  <label id="campaignName2">{{campaignLot.lotCount}} {{ 'projectCampaignComponent.lots' | translate:lang }}</label>
+                </div>
+                <div class="col-sm-4">
+                  <div class="progress" id="progressbarCampaign">
+                    <div class="progress-bar progress-bar-danger" role="progressbar" [ngStyle]="{'width': campaignLot.campaign.rag_totals.R + '%' }">
+                      <label style="padding-top: 22px"> {{ campaignLot.campaign.rag_totals.R | number : '1.0-2'}}%  </label>
+                    </div>
+                    <div class="progress-bar progress-bar-warning" role="progressbar" [ngStyle]="{'width': campaignLot.campaign.rag_totals.A + '%' }">
+                      <label style="padding-top: 22px"> {{ campaignLot.campaign.rag_totals.A | number : '1.0-2'}}%  </label>
+                    </div>
+                    <div class="progress-bar progress-bar-success" role="progressbar" [ngStyle]="{'width': campaignLot.campaign.rag_totals.G +  (100 - (campaignLot.campaign.rag_totals.R +  campaignLot.campaign.rag_totals.A + campaignLot.campaign.rag_totals.G) ) + '%' }">
+                      <label style="padding-top: 22px"> {{ campaignLot.campaign.rag_totals.G | number : '1.0-2'}}%  </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-2 tile" id="blastView">
+                  <label class="label-blast-view custom-color"> {{ 'projectCampaignComponent.blastView' | translate:lang }} </label>
+                </div>
+                <div class="col-sm-1">
+                  <md-icon class="custom-color">ic_launch</md-icon>
+                </div>
+              </div>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne_i{{i}}" class="panel-collapse collapse">
+          <div class="panel-body">
+            <div class="panel-group" id="nested{{i}}">
+              <md-tab-group md-stretch-tabs="always" [selectedIndex]="selectedTab" id="tabs">
+                <md-tab label="{{ 'lotsComponent.labelUpstream' | translate:lang}}">
+                  <br />
+                  <div *ngIf="errorUpStream" class="alert-danger">{{ 'lotsComponent.errorUpStream' | translate:lang}}</div>
+                  <div class="custom-panel-lots">
+                    <div class="panel panel-default" *ngFor="let upStreamLot of upStreamLots; let j=index">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a [attr.data-parent]="'#nested' + i" id="collapseSecond">
+                            <div id="card-lot" class="row">
+                              <div class="col-sm-4 custom-title" id="lotNames">
+                                <label id="lotsNameId1">{{ 'lotsComponent.lot#' | translate:lang }}</label>
+                                <label id="lotsNameId2">{{ upStreamLot.name }}</label>
+                              </div>
+                              <div class="col-sm-4">
+                                <div class="progress" id="progressbarLots">
+                                  <div class="progress-bar progress-bar-danger" role="progressbar" [ngStyle]="{'width': upStreamLot.rag_totals.R + '%' }">
+                                  </div>
+                                  <div class="progress-bar progress-bar-warning" role="progressbar" [ngStyle]="{'width': upStreamLot.rag_totals.A + '%' }">
+                                  </div>
+                                  <div class="progress-bar progress-bar-success" role="progressbar" [ngStyle]="{'width': upStreamLot.rag_totals.G +  (100 - (upStreamLot.rag_totals.R +  upStreamLot.rag_totals.A + upStreamLot.rag_totals.G) ) + '%' }">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
+                </md-tab>
+                <md-tab label="{{ 'lotsComponent.labelDownstream' | translate:lang}}">
+                  <br />
+                  <div *ngIf="errorDownStream" class="alert-danger">{{ 'lotsComponent.errorDownStream' | translate:lang }}</div>
+                  <div class="custom-panel-lots">
+                    <div class="panel panel-default" *ngFor="let downStreamLot of downStreamLots; let j=index">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a [attr.data-parent]="'#nested' + i" id="collapseSecond">
+                            <div id="card-lot" class="row">
+                              <div class="col-sm-4 custom-title" id="lotNames">
+                                <label id="lotsNameId1">{{ 'lotsComponent.lot#' | translate:lang }}</label>
+                                <label id="lotsNameId2">{{ downStreamLot.name }}</label>
+                              </div>
+                              <div class="col-sm-1 custom-cpp">
+                              </div>
+                              <div class="col-sm-4">
+                                <div class="progress" id="progressbarLots">
+                                  <div class="progress-bar progress-bar-danger" role="progressbar" [ngStyle]="{'width': downStreamLot.rag_totals.R + '%' }">
+                                  </div>
+                                  <div class="progress-bar progress-bar-warning" role="progressbar" [ngStyle]="{'width': downStreamLot.rag_totals.A + '%' }">
+                                  </div>
+                                  <div class="progress-bar progress-bar-success" role="progressbar" [ngStyle]="{'width': downStreamLot.rag_totals.G +  (100 - (downStreamLot.rag_totals.R +  downStreamLot.rag_totals.A + downStreamLot.rag_totals.G) ) + '%' }">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
+                </md-tab>
+                <md-tab label="{{ 'lotsComponent.labelFormulation' | translate:lang}}">
+                  <br />
+                  <div *ngIf="errorFormulation" class="alert-danger">{{ 'lotsComponent.errorFormulation' | translate:lang }}</div>
+                  <div class="custom-panel-lots">
+                    <div class="panel panel-default" *ngFor="let formulationLot of formulationLots; let j=index">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a [attr.data-parent]="'#nested' + i" id="collapseSecond">
+                            <div id="card-lot" class="row">
+                              <div class="col-sm-4 custom-title" id="lotNames">
+                                <label id="lotsNameId1">{{ 'lotsComponent.lot#' | translate:lang }}</label>
+                                <label id="lotsNameId2">{{ formulationLot.name }}</label>
+                              </div>
+                              <div class="col-sm-1 custom-cpp">
+                              </div>
+                              <div class="col-sm-4">
+                                <div class="progress" id="progressbarLots">
+                                  <div class="progress-bar progress-bar-danger" role="progressbar" [ngStyle]="{'width': formulationLot.rag_totals.R + '%' }">
+                                  </div>
+                                  <div class="progress-bar progress-bar-warning" role="progressbar" [ngStyle]="{'width': formulationLot.rag_totals.A + '%' }">
+                                  </div>
+                                  <div class="progress-bar progress-bar-success" role="progressbar" [ngStyle]="{'width': formulationLot.rag_totals.G +  (100 - (formulationLot.rag_totals.R +  formulationLot.rag_totals.A + formulationLot.rag_totals.G) ) + '%' }">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
+                </md-tab>
+              </md-tab-group>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

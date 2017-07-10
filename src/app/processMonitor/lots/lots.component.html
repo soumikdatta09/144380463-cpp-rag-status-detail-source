@@ -1,0 +1,265 @@
+<div class="container">
+  <br />
+  <label id="mfsName" (click)="getmfsPage()">{{mfsName}}</label><label id="cppName"> | {{ 'lotsComponent.campaign' | translate:lang }} {{campaignName}}</label>
+  <br />
+  <md-tab-group md-stretch-tabs="always" [selectedIndex]="selectedTab" id="tabs">
+    <md-tab label="{{ 'lotsComponent.labelUpstream' | translate:lang}}">
+      <div [ngBusy]="busy"></div>
+      <br /> <br />
+      <div class="panel-group" id="accordion">
+        <div *ngIf="errorUpStream" class="alert-danger">{{ 'lotsComponent.errorUpStream' | translate:lang}}</div>
+        <div class="panel panel-default" *ngFor="let upStreamLot of upStreamLots; let i=index">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne_i{{i}}">
+                <div class="row">
+                  <div class="col-sm-4 custom-title">
+                    <label id="lotsNameId1">{{ 'lotsComponent.lot#' | translate:lang }}</label>
+                    <label id="lotsNameId2">{{ upStreamLot.name }}</label>
+                  </div>
+                  <div class="col-sm-1 custom-cpp">
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="progress" id="progressbarFirst">
+                      <div class="progress-bar progress-bar-danger" role="progressbar" [ngStyle]="{'width': upStreamLot.rag_totals.R + '%' }">
+                      </div>
+                      <div class="progress-bar progress-bar-warning" role="progressbar" [ngStyle]="{'width': upStreamLot.rag_totals.A + '%' }">
+                      </div>
+                      <div class="progress-bar progress-bar-success" role="progressbar" [ngStyle]="{'width': upStreamLot.rag_totals.G +  (100 - (upStreamLot.rag_totals.R +  upStreamLot.rag_totals.A + upStreamLot.rag_totals.G) ) + '%' }">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne_i{{i}}" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-group" id="nested{{i}}">
+                <div class="panel panel-default" *ngFor="let unit_operation of upStreamLot.unit_operations; let j=index">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" [attr.data-parent]="'#nested' + i" href="#nested-collapseOne_i{{i}}_j{{j}}" id="collapseSecond">
+                        <div class="col-sm-4" id="colsm4">
+                          <div class="progress" id="progressbarSecond">
+                            <div class="progress-bar progress-bar-danger" role="progressbar" [ngStyle]="{'width': unit_operation.rag_totals.R + '%' }">
+                            </div>
+                            <div class="progress-bar progress-bar-warning" role="progressbar" [ngStyle]="{'width': unit_operation.rag_totals.A + '%' }">
+                            </div>
+                            <div class="progress-bar progress-bar-success" role="progressbar" [ngStyle]="{'width': unit_operation.rag_totals.G +  (100 - (unit_operation.rag_totals.R +  unit_operation.rag_totals.A + unit_operation.rag_totals.G) ) + '%' }">
+                            </div>
+                          </div>
+                        </div>
+                        <label attr.id="design_i{{i}}_j{{j}}_img" class="unitOperationNameId">{{unit_operation.name}}</label>
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="nested-collapseOne_i{{i}}_j{{j}}" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <md-list>
+                        <div *ngIf="unit_operation.parameters.length <= 0; then message">
+                        </div>
+                        <ng-template #message>
+                          <div class="alert-danger">{{ 'lotsComponent.errorCpp' | translate:lang }}</div>
+                        </ng-template>
+                        <div *ngFor="let parameter of unit_operation.parameters;let k=index" [class.odd]="k%2==1" [class.even]="k%2==0">
+                          <md-list-item id="listItem" *ngIf="unit_operation.parameters.length > 0">
+                            <div class="progress" id="progressbarThird">
+                              <div class="progress-bar progress-bar-danger" *ngIf="parameter.status=='R'" role="progressbar" [ngStyle]="{'width': 100 + '%' }">
+                              </div>
+                              <div class="progress-bar progress-bar-warning" *ngIf="parameter.status=='A'" role="progressbar" [ngStyle]="{'width': 100 + '%' }">
+                              </div>
+                              <div class="progress-bar progress-bar-success" *ngIf="parameter.status=='G'" role="progressbar" [ngStyle]="{'width': 100 + '%' }">
+                              </div>
+                            </div>
+                            <div id="cppName">
+                              <font color="#292C2D">{{parameter.name}}</font>
+                            </div>
+                            <md-icon class="icon-source" style="cursor: pointer;" (click)="openDialog(upStreamLot.id, upStreamLot.name)">filter_none</md-icon>
+                            <div id="source" style="cursor: pointer;" (click)="openDialog(upStreamLot.id, upStreamLot.name)">{{'lotsComponent.source'| translate:lang}}</div>
+                          </md-list-item>
+                        </div>
+                      </md-list>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </md-tab>
+    <md-tab label="{{ 'lotsComponent.labelDownstream' | translate:lang}}">
+      <div [ngBusy]="busy"></div>
+      <br /> <br />
+      <div class="panel-group" id="accordion">
+        <div *ngIf="errorDownStream" class="alert-danger">{{ 'lotsComponent.errorDownStream' | translate:lang }}</div>
+        <div class="panel panel-default" *ngFor="let downStreamLot of downStreamLots; let i=index">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne_i{{i}}">
+                <div class="row">
+                  <div class="col-sm-4 custom-title">
+                    <label id="lotsNameId1">{{ 'lotsComponent.lot#' | translate:lang }}</label>
+                    <label id="lotsNameId2">{{ downStreamLot.name }}</label>
+                  </div>
+                  <div class="col-sm-1 custom-cpp">
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="progress" id="progressbarFirst">
+                      <div class="progress-bar progress-bar-danger" role="progressbar" [ngStyle]="{'width': downStreamLot.rag_totals.R + '%' }">
+                      </div>
+                      <div class="progress-bar progress-bar-warning" role="progressbar" [ngStyle]="{'width': downStreamLot.rag_totals.A + '%' }">
+                      </div>
+                      <div class="progress-bar progress-bar-success" role="progressbar" [ngStyle]="{'width': downStreamLot.rag_totals.G +  (100 - (downStreamLot.rag_totals.R +  downStreamLot.rag_totals.A + downStreamLot.rag_totals.G) ) + '%' }">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne_i{{i}}" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-group" id="nested{{i}}">
+                <div class="panel panel-default" *ngFor="let unit_operation of downStreamLot.unit_operations; let j=index">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" [attr.data-parent]="'#nested' + i" href="#nested-collapseOne_i{{i}}_j{{j}}" id="collapseSecond">
+                        <div class="col-sm-4" id="colsm4">
+                          <div class="progress" id="progressbarSecond">
+                            <div class="progress-bar progress-bar-danger" role="progressbar" [ngStyle]="{'width': unit_operation.rag_totals.R + '%' }">
+                            </div>
+                            <div class="progress-bar progress-bar-warning" role="progressbar" [ngStyle]="{'width': unit_operation.rag_totals.A + '%' }">
+                            </div>
+                            <div class="progress-bar progress-bar-success" role="progressbar" [ngStyle]="{'width': unit_operation.rag_totals.G +  (100 - (unit_operation.rag_totals.R +  unit_operation.rag_totals.A + unit_operation.rag_totals.G) ) + '%' }">
+                            </div>
+                          </div>
+                        </div>
+                        <label attr.id="design_i{{i}}_j{{j}}_img" class="unitOperationNameId">{{unit_operation.name}}</label>
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="nested-collapseOne_i{{i}}_j{{j}}" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <md-list>
+                        <div *ngIf="unit_operation.parameters.length <= 0; then message">
+                        </div>
+                        <ng-template #message>
+                          <div class="alert-danger">{{ 'lotsComponent.errorCpp' | translate:lang }}</div>
+                        </ng-template>
+                        <div *ngFor="let parameter of unit_operation.parameters;let k=index" [class.odd]="k%2==1" [class.even]="k%2==0">
+                          <md-list-item id="listItem" *ngIf="unit_operation.parameters.length > 0">
+                            <div class="progress" id="progressbarThird">
+                              <div class="progress-bar progress-bar-danger" *ngIf="parameter.status=='R'" role="progressbar" [ngStyle]="{'width': 100 + '%' }">
+                              </div>
+                              <div class="progress-bar progress-bar-warning" *ngIf="parameter.status=='A'" role="progressbar" [ngStyle]="{'width': 100 + '%' }">
+                              </div>
+                              <div class="progress-bar progress-bar-success" *ngIf="parameter.status=='G'" role="progressbar" [ngStyle]="{'width': 100 + '%' }">
+                              </div>
+                            </div>
+                            <div id="cppName">
+                              <font color="#292C2D">{{parameter.name}}</font>
+                            </div>
+                            <md-icon class="icon-source" style="cursor: pointer;" (click)="openDialog(downStreamLot.id, downStreamLot.name)">filter_none</md-icon>
+                            <div id="source" style="cursor: pointer;" (click)="openDialog(downStreamLot.id, downStreamLot.name)">{{'lotsComponent.source'| translate:lang}}</div>
+                          </md-list-item>
+                        </div>
+                      </md-list>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </md-tab>
+    <md-tab label="{{ 'lotsComponent.labelFormulation' | translate:lang}}">
+      <div [ngBusy]="busy"></div>
+      <br /> <br />
+      <div class="panel-group" id="accordion">
+        <div *ngIf="errorFormulation" class="alert-danger">{{ 'lotsComponent.errorFormulation' | translate:lang }}</div>
+        <div class="panel panel-default" *ngFor="let formulationLot of formulationLots; let i=index">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne_i{{i}}">
+                <div class="row">
+                  <div class="col-sm-4 custom-title">
+                    <label id="lotsNameId1">{{ 'lotsComponent.lot#' | translate:lang }}</label>
+                    <label id="lotsNameId2">{{ formulationLot.name }}</label>
+                  </div>
+                  <div class="col-sm-1 custom-cpp">
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="progress" id="progressbarFirst">
+                      <div class="progress-bar progress-bar-danger" role="progressbar" [ngStyle]="{'width': formulationLot.rag_totals.R + '%' }">
+                      </div>
+                      <div class="progress-bar progress-bar-warning" role="progressbar" [ngStyle]="{'width': formulationLot.rag_totals.A + '%' }">
+                      </div>
+                      <div class="progress-bar progress-bar-success" role="progressbar" [ngStyle]="{'width': formulationLot.rag_totals.G +  (100 - (formulationLot.rag_totals.R +  formulationLot.rag_totals.A + formulationLot.rag_totals.G) ) + '%' }">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne_i{{i}}" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="panel-group" id="nested{{i}}">
+                <div class="panel panel-default" *ngFor="let unit_operation of formulationLot.unit_operations; let j=index">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" [attr.data-parent]="'#nested' + i" href="#nested-collapseOne_i{{i}}_j{{j}}" id="collapseSecond">
+                        <div class="col-sm-4" id="colsm4">
+                          <div class="progress" id="progressbarSecond">
+                            <div class="progress-bar progress-bar-danger" role="progressbar" [ngStyle]="{'width': unit_operation.rag_totals.R + '%' }">
+                            </div>
+                            <div class="progress-bar progress-bar-warning" role="progressbar" [ngStyle]="{'width': unit_operation.rag_totals.A + '%' }">
+                            </div>
+                            <div class="progress-bar progress-bar-success" role="progressbar" [ngStyle]="{'width': unit_operation.rag_totals.G +  (100 - (unit_operation.rag_totals.R +  unit_operation.rag_totals.A + unit_operation.rag_totals.G) ) + '%' }">
+                            </div>
+                          </div>
+                        </div>
+                        <label attr.id="design_i{{i}}_j{{j}}_img" class="unitOperationNameId">{{unit_operation.name}}</label>
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="nested-collapseOne_i{{i}}_j{{j}}" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <md-list>
+                        <div *ngIf="unit_operation.parameters.length <= 0; then message">
+                        </div>
+                        <ng-template #message>
+                          <div class="alert-danger">{{ 'lotsComponent.errorCpp' | translate:lang }}</div>
+                        </ng-template>
+                        <div *ngFor="let parameter of unit_operation.parameters;let k=index" [class.odd]="k%2==1" [class.even]="k%2==0">
+                          <md-list-item id="listItem" *ngIf="unit_operation.parameters.length > 0">
+                            <div class="progress" id="progressbarThird">
+                              <div class="progress-bar progress-bar-danger" *ngIf="parameter.status=='R'" role="progressbar" [ngStyle]="{'width': 100 + '%' }">
+                              </div>
+                              <div class="progress-bar progress-bar-warning" *ngIf="parameter.status=='A'" role="progressbar" [ngStyle]="{'width': 100 + '%' }">
+                              </div>
+                              <div class="progress-bar progress-bar-success" *ngIf="parameter.status=='G'" role="progressbar" [ngStyle]="{'width': 100 + '%' }">
+                              </div>
+                            </div>
+                            <div id="cppName">
+                              <font color="#292C2D">{{parameter.name}}</font>
+                            </div>
+                            <md-icon class="icon-source" style="cursor: pointer;" (click)="openDialog(formulationLot.id, formulationLot.name)">filter_none</md-icon>
+                            <div id="source" style="cursor: pointer;" (click)="openDialog(formulationLot.id, formulationLot.name)">{{'lotsComponent.source'| translate:lang}}</div>
+                          </md-list-item>
+                        </div>
+                      </md-list>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </md-tab>
+  </md-tab-group>
+</div>

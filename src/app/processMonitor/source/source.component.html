@@ -1,0 +1,35 @@
+<div class="divCloseModal">
+  <button class="btnCloseModal" md-button md-dialog-close="X">X</button>
+</div>
+<h3 md-dialog-title [style.font-size]="'Medium'">
+
+  Lot # {{name}}
+</h3>
+<div md-dialog-content>
+
+  <md-grid-list cols="20" rowHeight="1:1">
+    <md-grid-tile [style.background]="'#EDEFF0'" [style.font-weight]="'Bold'" [colspan]="2">{{ 'sourceComponent.unitOperation' | translate:lang }}</md-grid-tile>
+    <md-grid-tile [style.background]="'#EDEFF0'" [style.font-weight]="'Bold'" [colspan]="2">{{ 'sourceComponent.parameter' | translate:lang }}</md-grid-tile>
+    <md-grid-tile [style.background]="'#EDEFF0'" [style.font-weight]="'Bold'" [colspan]="2">{{ 'sourceComponent.unitOfMeasure' | translate:lang }}</md-grid-tile>
+    <md-grid-tile [style.background]="'#EDEFF0'" [style.font-weight]="'Bold'" [colspan]="2">{{ 'sourceComponent.processRangeLo' | translate:lang }}</md-grid-tile>
+    <md-grid-tile [style.background]="'#EDEFF0'" [style.font-weight]="'Bold'" [colspan]="2">{{ 'sourceComponent.processRangeHi' | translate:lang }}</md-grid-tile>
+    <md-grid-tile [style.background]="'#EDEFF0'" [style.font-weight]="'Bold'" [colspan]="2">{{ 'sourceComponent.normOpRangeLolo' | translate:lang }}</md-grid-tile>
+    <md-grid-tile [style.background]="'#EDEFF0'" [style.font-weight]="'Bold'" [colspan]="2">{{ 'sourceComponent.normOpRangeHihi' | translate:lang }}</md-grid-tile>
+    <md-grid-tile [style.background]="'#EDEFF0'" [style.font-weight]="'Bold'" [colspan]="2">{{ 'sourceComponent.absoluteValue' | translate:lang }}</md-grid-tile>
+    <md-grid-tile [style.background]="'#EDEFF0'" [style.font-weight]="'Bold'" [colspan]="3">{{ 'sourceComponent.classification' | translate:lang }}</md-grid-tile>
+    <md-grid-tile [style.background]="'#EDEFF0'" [style.font-weight]="'Bold'" [colspan]="1">{{ 'sourceComponent.status' | translate:lang }}</md-grid-tile>
+  </md-grid-list>
+  <md-grid-list cols="20" rowHeight="1:1">
+    <md-grid-tile [style.background]="'#F8F9F9'" [colspan]="2">{{ cppDetails.unitOperation }}</md-grid-tile>
+    <md-grid-tile [style.background]="'#F8F9F9'" [colspan]="2">{{ cppDetails.parameter }}</md-grid-tile>
+    <md-grid-tile [style.background]="'#F8F9F9'" [colspan]="2">{{ cppDetails.unitOfMeasure }}</md-grid-tile>
+    <md-grid-tile [style.background]="'#F8F9F9'" [colspan]="2">{{ cppDetails.processRangeLO }}</md-grid-tile>
+    <md-grid-tile [style.background]="'#F8F9F9'" [colspan]="2">{{ cppDetails.processRangeHI }}</md-grid-tile>
+    <md-grid-tile [style.background]="'#F8F9F9'" [colspan]="2">{{ cppDetails.normalOperatingRangeLOLO }}</md-grid-tile>
+    <md-grid-tile [style.background]="'#F8F9F9'" [colspan]="2">{{ cppDetails.normalOperatingRangeHIHI }}</md-grid-tile>
+    <md-grid-tile [style.background]="'#F8F9F9'" [colspan]="2">{{ cppDetails.absoluteValue }}</md-grid-tile>
+    <md-grid-tile [style.background]="'#F8F9F9'" [colspan]="3">{{ cppDetails.classification }}</md-grid-tile>
+    <md-grid-tile [style.background]="'#F8F9F9'" [colspan]="1"><img [src]="img_url" /></md-grid-tile>
+  </md-grid-list>
+
+</div>

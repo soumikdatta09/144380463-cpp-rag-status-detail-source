@@ -1,0 +1,14 @@
+{
+  "lotsID": 12345,
+  "lotsName": "Lot #CT 853_B3",
+  "unitOperation": "Shake Flask Expansion",
+  "parameter": "Step Duration",
+  "unitOfMeasure": "Days",
+  "processRangeLO": "N/A",
+  "processRangeHI": "N/A",
+  "normalOperatingRangeLOLO": "N/A",
+  "normalOperatingRangeHIHI": "6",
+  "absoluteValue": "8",
+  "classification": "PA - Performance Attribute",
+  "status": "R"
+}

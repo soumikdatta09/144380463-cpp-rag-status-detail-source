@@ -1,0 +1,158 @@
+.card-one {
+ width: 300px;
+ height:60px;
+ color: #373A3C;	
+ font-family: Roboto;	
+ font-size: 18px;
+
+}
+.card-Three {
+  width: 300px;
+  height:60px;
+  background: #EDEFF0;
+  color:#292C2D
+
+}
+.card-two {
+  width: 300px;
+  height:50px;
+  padding-left: 170px;
+  padding-bottom: 10px;
+
+}
+.progress
+{
+    width:300px;
+    height:60px;
+    border-radius: 0px;
+}
+
+.md-card.mat-card {
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+.card
+{
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    width: 300px;
+    height:60px;
+
+}
+.custom{
+  height:200px;
+  width:300px;
+}
+.md-card.col-sm-4.mat-card {
+    width: 350px;
+}
+
+.card[_ngcontent-c4] {
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    width: 300px;
+}
+
+.col-sm-4
+{
+    position: relative;
+    min-height: 1px;
+    padding-right: 20px;
+    padding-left: 60px;
+    padding-top: 30px;;
+    width: 340px;
+    height: 30%;
+
+}
+.progress-bar-danger {
+    background-color: #D0011B;
+}
+.progress-bar-warning {
+    background-color: #FAB600;
+}
+.progress-bar-success {
+    background-color: #7ED321;
+}
+.mat-card-title {
+    font-size: 18px;
+    font-weight: 400;
+    font-style: initial;
+}
+
+.new_custom_card{
+  position: relative;
+  text-align: center;
+  font-weight: 500;
+  padding-left: 30%;
+  padding-right: 35%;
+  padding-top: 70%;
+  padding-bottom: 30%;
+  
+}
+.blast
+{
+    font-style: initial;
+    color: #1BBEFE;
+    font-family: Roboto;	
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.image
+{
+  width:27px;
+  height:26px;
+}
+.labeltext {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    text-align: right;
+    margin-left: 39px;
+    color: #FFFFFF;	font-family: Arial;	font-size: 18px;	
+    font-weight: bold; 
+}
+.labelno {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    margin-bottom: 0px;
+    margin-left: 19px;
+    margin-top: 1px;
+	opacity: 0.41;	
+    color: #000000;	
+    font-family: Arial;	
+    font-size: 52px;	
+    font-weight: bold;	
+    line-height: 60px;
+	text-align: center;
+}
+.labellot {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+    margin-left: 6px;
+    opacity: 0.41;color:#000000;	
+    font-family: Roboto;
+    font-size: 18px;	
+    font-weight: bold;
+    line-height: 24px;	
+    text-align: center;
+    height: 1.85%;	width: 6.6%;
+  
+}
+.mfname {
+    padding-left: 45px;
+    margin-top: 40px;
+    color: #536B8E;
+   font-family: Roboto;	
+   font-size: 16px;
+}

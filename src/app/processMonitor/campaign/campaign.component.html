@@ -1,0 +1,87 @@
+<div [ngBusy]="busy"></div>
+<div id="mfId" class="mfname">{{mfsName}}</div>
+<div class="col-sm-4" *ngFor="let campaignsData of campaignsDatas; let i=index">
+
+  <div class="row" attr.data-target="#design{{i}}">
+    <md-card class="card-one">
+      <md-card-title>Campaign {{campaignsData.name}}</md-card-title>
+    </md-card>
+    <md-card class="card" >
+      <div *ngFor="let process_area of campaignsData.process_areas" (click)="getCampaigns(campaignsData.id,campaignsData.name,process_area.name)">
+        <div *ngIf="process_area.name =='Upstream'">
+
+          <div class="progress">
+            <div class="progress-bar progress-bar-danger" role="progressbar" [ngStyle]="{'width':process_area.rag_totals.R + '%' }">
+            </div>
+            <div class="progress-bar progress-bar-warning" role="progressbar" [ngStyle]="{'width':process_area.rag_totals.A+ '%' }">
+            </div>
+            <div class="progress-bar progress-bar-success" role="progressbar" [ngStyle]="{'width': process_area.rag_totals.G  +  (100 - ( process_area.rag_totals.R + process_area.rag_totals.A+  process_area.rag_totals.G ) ) + '%' }">
+            </div>
+          </div>
+        </div>
+        <md-card-footer>
+          <label class="labeltext"> {{ 'campaignComponent.upstream' | translate:lang }} </label>
+          <label class="labelno">  {{process_area.lots.length}} </label>
+          <label class="labellot">{{ 'campaignComponent.lots' | translate:lang }}</label>
+        </md-card-footer>
+        <div *ngIf="process_area.name !='Upstream'">
+          <md-card class="card-Three">
+            {{ 'campaignComponent.NodataforUpstream' | translate:lang }}
+          </md-card>
+        </div>
+      </div>
+    </md-card>
+    <md-card class="card">
+      <div *ngFor="let process_area of campaignsData.process_areas" (click)="getCampaigns(campaignsData.id,campaignsData.name,process_area.name)">
+        <div *ngIf="process_area.name =='Downstream'">
+          <div class="progress">
+            <div class="progress-bar progress-bar-danger" role="progressbar" [ngStyle]="{'width':process_area.rag_totals.R + '%' }">
+            </div>
+            <div class="progress-bar progress-bar-warning" role="progressbar" [ngStyle]="{'width':process_area.rag_totals.A+ '%' }">
+            </div>
+            <div class="progress-bar progress-bar-success" role="progressbar" [ngStyle]="{'width': process_area.rag_totals.G  +  (100 - ( process_area.rag_totals.R + process_area.rag_totals.A+  process_area.rag_totals.G ) ) + '%' }">
+            </div>
+          </div>
+        </div>
+        <md-card-footer>
+          <label class="labeltext"> {{ 'campaignComponent.downstream' | translate:lang }}  </label>
+          <label class="labelno">  {{process_area.lots.length}} </label>
+          <label class="labellot">{{ 'campaignComponent.lots' | translate:lang }}</label>
+        </md-card-footer>
+        <div *ngIf="process_area.name !='Downstream'">
+          <md-card class="card-Three">
+            {{ 'campaignComponent.NodataforDownstream' | translate:lang }}
+          </md-card>
+        </div>
+      </div>
+    </md-card>
+    <md-card class="card">
+      <div *ngFor="let process_area of campaignsData.process_areas" (click)="getCampaigns(campaignsData.id,campaignsData.name,process_area.name)">
+        <div *ngIf="process_area.name =='Formulation'">
+          <div class="progress">
+            <div class="progress-bar progress-bar-danger" role="progressbar" [ngStyle]="{'width':process_area.rag_totals.R + '%' }">
+            </div>
+            <div class="progress-bar progress-bar-warning" role="progressbar" [ngStyle]="{'width':process_area.rag_totals.A+ '%' }">
+            </div>
+            <div class="progress-bar progress-bar-success" role="progressbar" [ngStyle]="{'width': process_area.rag_totals.G  +  (100 - ( process_area.rag_totals.R + process_area.rag_totals.A+  process_area.rag_totals.G ) ) + '%' }">
+            </div>
+          </div>
+        </div>
+        <md-card-footer>
+          <label class="labeltext"> {{ 'campaignComponent.formulation' | translate:lang }} </label>
+          <label class="labelno">  {{process_area.lots.length}} </label>
+          <label class="labellot">{{ 'campaignComponent.lots' | translate:lang }}</label>
+        </md-card-footer>
+        <div *ngIf="process_area.name !='Formulation'">
+          <md-card class="card-Three">
+            {{ 'campaignComponent.NodataforFormulation' | translate:lang }}
+          </md-card>
+        </div>
+      </div>
+    </md-card>
+    <md-card class="card-two">
+      <md-card-title class="blast">{{ 'campaignComponent.blastView' | translate:lang }} <img class="image" src="../assets/images/update.png" alt=""></md-card-title>
+    </md-card>
+  </div>
+
+</div>

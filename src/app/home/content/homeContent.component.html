@@ -1,0 +1,52 @@
+<div>
+     <md-card class="homeIntro">
+      <md-card-content>     
+        <h1 class="homeIntroHeading"><img id="introImage" src="../../assets/images/LogoBlast.png" alt="headerImage" /></h1>
+       </md-card-content>
+        <md-card-footer>
+         <p class="homeIntroContent">{{ 'homeContentComponent.homeIntroContent' | translate:lang }}</p>
+       </md-card-footer>    
+    </md-card>
+    <div>
+        <div class="col-sm-3">
+            <a routerLink="/home/processmonitor">
+                <md-card id="processCard" class="navCardLeft">
+                    <md-icon class="large">device_hub</md-icon>
+                    <h4>{{ 'processMonitorComponent.processMonitor' | translate:lang }}</h4>
+                    <p>{{ 'processMonitorComponent.tileContent' | translate:lang }}</p><br/>
+                    <md-icon class="plus">control_point</md-icon>
+                </md-card>
+            </a>
+        </div>
+        <div class="col-sm-3">
+            <a routerLink="/home/resourcestracker">
+                <md-card id="resourceCard" class="navCards">
+                    <md-icon class="large">important_devices</md-icon>
+                    <h4>{{ 'resourcesTrackerComponent.resourcesTracker' | translate:lang }}</h4>
+                    <p>{{ 'resourcesTrackerComponent.tileContent' | translate:lang }}</p><br/>
+                    <md-icon class="plus">control_point</md-icon>
+                </md-card>
+            </a>
+        </div>
+        <div class="col-sm-3">
+            <a routerLink="/home/content360">
+                <md-card id="contentCard" class="navCards">
+                    <md-icon class="large">format_align_left</md-icon>
+                    <h4>{{ 'content360Component.content360' | translate:lang }}</h4>
+                    <p>{{ 'content360Component.tileContent' | translate:lang }}</p><br/>
+                    <md-icon class="plus">control_point</md-icon>
+                </md-card>
+            </a>
+        </div>
+        <div class="col-sm-3">
+            <a routerLink="/home/patternview">
+                <md-card id="patternCard" class="navCardRight">
+                    <md-icon class="large">timeline</md-icon>
+                    <h4>{{ 'patternViewComponent.patternView' | translate:lang }}</h4>
+                    <p>{{ 'patternViewComponent.tileContent' | translate:lang }}</p><br/>
+                    <md-icon class="plus">control_point</md-icon>
+                </md-card>
+            </a>
+        </div>
+    </div>
+</div>

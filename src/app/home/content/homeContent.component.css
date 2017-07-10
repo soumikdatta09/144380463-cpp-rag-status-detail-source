@@ -1,0 +1,77 @@
+.homeIntro{
+    height: 40%;
+    background-color: #587091;
+    box-shadow: 2px 2px 5px #888888;  
+    padding-bottom: 0px;  
+    height:350px;
+}
+
+.homeIntroHeading{
+    margin-top: 0;
+    text-align: center;
+    color:white;
+    padding-left: 289px;
+    padding-top: 36px;
+    height: 384px;
+}
+
+.homeIntroContent{
+    padding-top: 5px;
+    padding-left: 120px;
+    padding-right: 120px;
+    padding-bottom: 40px;
+    text-align: left;
+    color:#FFFFFF;
+    font-family: Roboto;
+    font-weight: bold;	
+    font-size: 16px;
+    padding-bottom: 50px;   
+}
+
+.navCards{
+    margin-top: 50px;
+    height: 50%;
+    min-height: 250px;
+    text-align: center;
+    color: #587091;
+}
+
+.navCardLeft{
+    margin-top: 50px;
+    height: 50%;
+    min-height: 250px;
+    text-align: center;
+    color: #587091;
+}
+
+.navCardRight{
+    margin-top: 50px;
+    height: 50%;
+    min-height: 250px;
+    text-align: center;
+    color: #587091;
+}
+
+.plus{
+    padding-top: 10px;
+    height: 50px;
+    width: 50px;
+    color: #34c5fe;
+}
+
+.large{
+    font-size: 40px;
+    padding-bottom: 10px;
+}
+
+a, u {
+    text-decoration: none;
+}
+
+.well{
+    background-color: #f8f9f9;
+}
+img#introImage {
+    height:290px;
+}
+

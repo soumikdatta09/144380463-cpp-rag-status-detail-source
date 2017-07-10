@@ -1,0 +1,66 @@
+<md-sidenav-container class="md-container">
+	<md-sidenav #sidenav class="md-sidenav" mode="side" opened="true">
+		<div class="headerArea">
+			<img src="../assets/burst-header.png" alt="headerImage" />
+			<img src="../assets/Logo@2x.png" alt="headerImage" />
+		</div>
+		<nav md-tab-nav-bar>
+			<ul class="sidenavmenulist">
+				<li>
+					<md-icon class="icon-navigation">home</md-icon>
+					<a class="sidenavLink" md-tab-link routerLink="/home/index" id="home">{{ 'homeComponent.home'  | translate:lang }}</a>
+				</li>
+				<li>
+					<md-icon class="icon-navigation">device_hub</md-icon>
+					<a class="sidenavLink" md-tab-link routerLink="/home/processmonitor" id="processMonitor">{{ 'homeComponent.processMonitor'  | translate:lang }}</a>
+				</li>
+				<li>
+					<md-icon class="icon-navigation">important_devices</md-icon>
+					<a class="sidenavLink" md-tab-link routerLink="/home/resourcestracker" id="resourcesTracker">{{ 'homeComponent.resourcesTracker' | translate:lang }}</a>
+				</li>
+				<li>
+					<md-icon class="icon-navigation">format_align_left</md-icon>
+					<a class="sidenavLink" md-tab-link routerLink="/home/content360" id="content360">{{ 'homeComponent.content360'  | translate:lang }}</a>
+				</li>
+				<li>
+					<md-icon class="icon-navigation">timeline</md-icon>
+					<a class="sidenavLink" md-tab-link routerLink="/home/patternview" id="PatternView">{{ 'homeComponent.patternView'  | translate:lang }}</a>
+				</li>
+			</ul>
+		</nav>
+	</md-sidenav>
+	<nav md-tab-nav-bar>
+		<div class="topNavBar">
+			<label class="pagename">{{ headerValue | translate:lang }}</label>
+			<label id="blankSpacer"></label><label id="blankSpacer"></label><label id="blankSpacer"></label>
+			<label md-span *ngIf="data" id="welcome">{{ 'homeComponent.welcome'  | translate:lang }}, {{data}}</label>
+			<label *ngIf="role" id="role">{{ 'homeComponent.role'  | translate:lang }} {{role}}</label>
+			<a md-tab-link routerLink="/login" id="Logout">{{ 'homeComponent.logout'  | translate:lang }}</a>
+		</div>
+	</nav>
+	<router-outlet></router-outlet>
+	<footer>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-3 offset-md-1 footerlogo">
+					<img src="../assets/burst-footer.png" alt="headerImage" />
+					<img src="../assets/Logo-footer.png" alt="headerImage" />
+				</div>
+				<div class="col-md-1 offset-md-1 footerLinks">
+					|<a routerLink="/home/index" class="homeFooter" id="footerHome">{{ 'homeComponent.home'  | translate:lang }}</a>
+				</div>
+				<div class="col-md-1 offset-md-1 footerLinks">
+					|<a routerLink="" class="homeFooter" id="footerAbout">{{ 'homeComponent.about'  | translate:lang }}</a>
+				</div>
+				<div class="col-md-1 offset-md-1 footerLinks">
+					|<a routerLink="" class="homeFooter" id="footerContact">{{ 'homeComponent.contact'  | translate:lang }}</a>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container-fluid">
+				&copy; {{ date | date:'yyyy' }} {{ 'homeComponent.copyright' | translate:lang }}
+			</div>
+		</div>
+	</footer>
+</md-sidenav-container>
