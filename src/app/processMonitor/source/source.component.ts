@@ -10,7 +10,7 @@ import { Language } from 'angular-l10n';
 })
 export class SourceComponent implements OnInit {
   @Language() lang: string;
-  public cppDetails: any[] = [];
+  public cppDetails: any;
   public img_url: string = '';
   name: any;
   id: any;
